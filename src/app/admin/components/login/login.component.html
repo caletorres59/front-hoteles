@@ -1,0 +1,41 @@
+
+
+
+<div class="content login">
+        <div class="cont-form">
+            <img src="../../../../assets/img/logo.jpg" alt="">
+            <div class="alert alert-success" *ngIf="status == 'success'">
+    
+                
+    
+            </div>
+            <div class="alert alert-success" *ngIf="status == 'error'">
+                    no se ha podido completar el registro
+        
+             </div>
+            <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+                
+    
+                
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email" #email="ngModel" [(ngModel)]="user.email" required />
+                    <span *ngIf="!email.valid && email.touched">
+                        El email es obligatorio
+                    </span>
+                </div>
+              
+    
+                <div class="form-group">
+                    <label for="">Contraseña</label>
+                    <input type="password" name="password" class="form-control" #password="ngModel" [(ngModel)]="user.password" required />
+                    <span *ngIf="!password.valid && password.touched">
+                        El password es obligatorio
+                    </span>
+                </div>
+                <input type="submit" class="btn btn-success form-control" value="{{title}}" [disabled]="!loginForm.form.valid">
+
+                <span>Registrate <a [routerLink] = "['/register']">aquí</a></span>
+            </form>
+        </div>
+    </div>

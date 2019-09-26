@@ -1,0 +1,30 @@
+<h2>Mis Hoteles</h2>
+
+
+<div class="container messa" *ngIf="status">
+                <div class="alert">
+                    {{message}} !
+                </div>
+</div>
+
+<div class="container">
+    <div class="row" >
+        <div class="col-md-4" *ngFor="let hotel of hoteles; let first = first; let last = last">
+                <div class="card item-list-hot"   >
+                        <img src="../../../../assets/img/hotel-test.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{hotel.nombre}}</h5>
+                          <img src="../../../../assets/img/stars.png"class="stars" alt="">
+                          <p class="card-text">{{hotel.descripcion}}</p>
+                          <ul>
+                              <li>Dirección: {{hotel.direccion}}</li>
+                              <li>Teléfono: {{hotel.telefono}}</li>
+                          </ul>
+                             <a [routerLink]="['edit/', this.hotel._id]">Edit</a>
+                            
+                        </div>
+                </div>
+        </div>
+
+    </div>
+</div>

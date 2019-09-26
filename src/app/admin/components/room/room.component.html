@@ -1,0 +1,46 @@
+<form #editForm="ngForm" (ngSubmit)="onSubmit(editForm)">
+    <div class="alert alert-success" *ngIf="status == 'success'">
+            Registro completo, <a [routerLink] = "['/login']">Ingresa aquí</a>
+
+        </div>
+        <div class="alert alert-success" *ngIf="status == 'error'">
+                no se ha podido completar el registro
+    
+            </div>
+    <div class="row">
+        <div class="col-md-12">
+                <div class="form-group">
+                        <label for="">Número de Habitación</label>
+                        <input type="text" class="form-control" name="numero" #numero="ngModel" [(ngModel)]="room.numero" required />
+                        <span *ngIf="!numero.valid && nombre.touched">
+                            El nombre es obligatorio
+                        </span>
+                </div>
+                <div class="form-group">
+                        <label for="">Costo</label>
+                        <input type="text" class="form-control" name="costo" #costo="ngModel" [(ngModel)]="room.costo" required />
+                        <span *ngIf="!costo.valid && costo.touched">
+                            El nombre es obligatorio
+                        </span>
+                </div>
+                <div class="form-group">
+                        <label for="">Impuesto</label>
+                        <input type="text" class="form-control" name="impuesto" #impuesto="ngModel" [(ngModel)]="room.impuesto" required />
+                        <span *ngIf="!impuesto.valid && impuesto.touched">
+                            El impuesto es obligatorio
+                        </span>
+                </div>
+                <div class="form-group">
+                    <label for="">Ubicación</label>
+                    <input type="text" class="form-control" name="ubicacion" #ubicacion="ngModel" [(ngModel)]="room.ubicacion" required />
+                    <span *ngIf="!ubicacion.valid && ubicacion.touched">
+                        La ubicacion es obligatorio
+                    </span>
+            </div>
+                <input type="hidden" name="hotelid">
+        </div>
+      
+    </div>
+   
+        <input type="submit"  class="form-control" value="Crear Habitación" [disabled]="!editForm.form.valid">
+</form>
